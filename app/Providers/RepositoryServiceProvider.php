@@ -7,6 +7,9 @@ use App\Repositories\BookRepository;
 use App\Repositories\OrderRepository;
 use App\Contracts\BookRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
+use App\Models\Order;
+use App\Observers\OrderObserver;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +26,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Order::observe(OrderObserver::class);
     }
 }
